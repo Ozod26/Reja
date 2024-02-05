@@ -1,5 +1,6 @@
 console.log("Wep Serverni boshlash");
 const express = require("express");
+const res = require('express/lib/response')
 const app = express(); // () expressni app objectini yuboradi 
 const http = require("http");
 
@@ -40,7 +41,7 @@ app.get("/", function (req, res ) {
 
 
 const server = http.createServer(app);
-let PORT = 3000;
+let PORT = 3001;
 server.listen(PORT, function() {
     console.log(`The server is running successfully on port: ${PORT} `);
 });
