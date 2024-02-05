@@ -27,6 +27,9 @@ app.get("/hello", function(req, res) {
 app.get("/gift", function(req, res) {
     res.end(`<h1>Siz sovgalar bolimidasiz</h1>`);
    });
+   app.get("/", function(req, res) {
+    res.render('project');
+   });
 
 
 const server = http.createServer(app);
