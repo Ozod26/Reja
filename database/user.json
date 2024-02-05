@@ -1,0 +1,24 @@
+{
+    "name": "Adam",  
+    "profession": "Software Engineer",
+    "age": "26",
+    "residence": "S.Korea",
+    "adress": "S.Korea, Seoul",
+    "languages": ["Uzbek", "Turkish", "Korean"],
+    "skills": ["Html", "Css", "Js", "NodeJs", "Pythod"],
+    "extra_skills": ["Bootstrap, Materialize", "Styling, Sass", "Django, Flask", "GIT Knowledge"],
+    "work_place": "IT Company",
+    "service_desc": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+    "about_me": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "city": "Denau",
+    "title": ["Flower", "Seedlings", "Gardner", "0ld", "New"],
+    "flower_desc": ["What is a Flower?", "What is a Seedling?", "Who is Gardner?"],
+    "flower_name": ["Tulip", "Daffodil", "Poppy", "Sunflower","Bluebell","Rose", "Snowdrop","Cherry", "blossom"],
+    "flower_price": ["15$", "25$", "12$", "20$", "35s", "30$", "22$", "19s", "9$"],
+    "famous_words": ["World is Beautiful with Flowers"],
+    "famous_name": ["Steve Jobs"]
+
+
+}
+
+
