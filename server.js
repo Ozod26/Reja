@@ -22,7 +22,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 //expressga kirib kelaytgan malumotlarga bogliq bolgan code yoziladi
 app.use(express.static("public"));
 app.use(express.json()); //objectga ogirib beradi
-app.use(express.urlencoded({extended: true})); // hrml, formdan post qilgan narsani qabul qd 
+app.use(express.urlencoded({extended: true})); // hrml, formdan post qilgan narsani qabul qd //  true nest objectni ochib beradi.
 
 // 2: session code
 
@@ -54,7 +54,7 @@ app.get("/", function (req, res ) {
 //    });
 
 
-const server = http.createServer(app);
+const server = http.createServer(app); 
 let PORT = 3000;
 server.listen(PORT, function() {
     console.log(`The server is running successfully on port: ${PORT} `);
