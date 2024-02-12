@@ -35,15 +35,31 @@ app.set("view engine", "ejs");
 // 4 Routing code  
 app.post("/create-item", (req, res) => {
     console.log(req.body);
-    res.json({test: "success" })
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({reja: new_reja}, (err, data) => {
+      if(err) {
+        console.log(err);
+        res.end("something went wrong");
+    } else {
+      res.end("successfully added");
+    }
+  });
 });
 
 app.get('/author', (req, res) => {
   res.render("author", {user: user}); 
 });
 
-app.get("/", function (req, res ) {
-    res.render("reja");
+app.get("/", function (req, res) {
+    console.log('user entered /create-item');
+    db.collection("plans").find().toArray((err, data) => {
+      if(err) {
+        console.log(err);
+        res.end("somthing went wrong");
+      } else {
+        res.render("reja", { items: data });
+      }
+    });
 });
 
 
@@ -54,4 +70,7 @@ app.get("/", function (req, res ) {
 //     res.end(`<h1>Siz sovgalar bolimidasiz</h1>`);
 //    });
 
-module.exports = app;
+module.exports = app; 
+
+
+
