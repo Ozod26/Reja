@@ -8,6 +8,7 @@ const app = express(); // () expressni app objectini yuboradi
 
 // MongoDB chaqirish
 const db = require("./server.js").db();
+const mongodb = require('mongodb')
 
 
 // let user;
@@ -34,22 +35,24 @@ app.set("view engine", "ejs");
 
 // 4 Routing code  
 app.post("/create-item", (req, res) => {
-    console.log(req.body);
+    console.log("user entered /create-item");
     const new_reja = req.body.reja;
     db.collection("plans").insertOne({reja: new_reja}, (err, data) => {
-      if(err) {
-        console.log(err);
-        res.end("something went wrong");
-    } else {
-      res.end("successfully added");
-    }
+    res.json(data.ops[0]);
   });
 });
 
-app.get('/author', (req, res) => {
-  res.render("author", {user: user}); 
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, 
+    function(err, data) {
+    res.json({state: "success" });
+  }
+  );
 });
 
+// callback 
+// array ichidagi object
 app.get("/", function (req, res) {
     console.log('user entered /create-item');
     db.collection("plans").find().toArray((err, data) => {
@@ -63,14 +66,7 @@ app.get("/", function (req, res) {
 });
 
 
-// app.get("/hello", function(req, res) {
-//  res.end(`<h1>HELLO WORLD</h1>`);
-// });
-// app.get("/gift", function(req, res) {
-//     res.end(`<h1>Siz sovgalar bolimidasiz</h1>`);
-//    });
-
 module.exports = app; 
 
 
-
+ 
