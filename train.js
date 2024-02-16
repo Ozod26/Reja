@@ -1,3 +1,8 @@
+/*D-TASK: 
+Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+*/
+
 function checkContent(str1, str2) {
   if (str1.length !== str2.length) {
       return false;
@@ -7,7 +12,9 @@ function checkContent(str1, str2) {
 
   return sortedStr1 === sortedStr2;
 }
-console.log(checkContent("mitgroup", "gmtiprou"));    
+console.log(checkContent("mitgroup", "gmtiprou"));   
+
+
 
 
 
