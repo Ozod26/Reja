@@ -23,16 +23,17 @@ const mongodb = require('mongodb')
 // 1: Kirish code
 //expressga kirib kelaytgan malumotlarga bogliq bolgan code yoziladi
 app.use(express.static("public"));
-app.use(express.json()); //objectga ogirib beradi
+app.use(express.json()); //json farmatdagi datani objectga ogirib beradi
 app.use(express.urlencoded({extended: true})); // hrml, formdan post qilgan narsani qabul qd //  true nest objectni ochib beradi.
 
 // 2: session code
 
 // 3: Views code
-app.set("views", "views");
-app.set("view engine", "ejs");
+app.set("views", "views"); //frontetimizni views folderdan topish
+app.set("view engine", "ejs"); //bizi frontet ejs frmatida
 
-
+// req maulumat olish
+// response javob berish 
 // 4 Routing code  
 app.post("/create-item", (req, res) => {
     console.log("user entered /create-item");
@@ -51,6 +52,26 @@ app.post("/delete-item", (req, res) => {
   );
 });
 
+app.post("/edit-item", (req, res) => {
+  const data = req.body;
+  console.log(data);
+  db.collection("plans").findOneAndUpdate(
+    {_id: new mongodb.ObjectId(data.id) }, 
+    { $set: { reja: data.new_input } }, 
+    function(err, data) {
+      res.json({ state: "success" });
+    }
+  );
+});
+
+app.post("/delete-all", (req, res) => {
+  if (req.body.delete_all) {
+    db.collection("plans").deleteMany(function () {
+      res.json({ state: "hamma rejalar o'chirildi" });
+    });
+  }
+}); 
+ 
 // callback 
 // array ichidagi object
 app.get("/", function (req, res) {
@@ -66,7 +87,7 @@ app.get("/", function (req, res) {
 });
 
 
-module.exports = app; 
+module.exports = app;
 
 
  
