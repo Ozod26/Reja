@@ -1,3 +1,39 @@
+/*F-TASK: 
+Shunday findDoublers function tuzing, unga faqat bitta string argument pass bolib, agar stringda bir hil harf qatnashgan bolsa true, qatnashmasa false qaytarishi kerak.
+MASALAN: getReverse("hello") return true return qiladi
+*/
+
+function findDoublers(str) {
+  if (str === "") {
+    return false;
+  }
+
+  const letters = str.split("");
+  const letterCounts = {};
+
+
+  letters.forEach(letter => {
+    if (letterCounts[letter]) {
+      letterCounts[letter]++;
+    } else {
+      letterCounts[letter] = 1;
+    }
+  });
+
+  for (const letter in letterCounts) {
+    if (letterCounts[letter] >= 2) {
+      return true;
+    }
+  }
+  return false;
+};
+
+console.log(findDoublers("hello")); // true
+console.log(findDoublers("world")); // false
+
+
+
+
 /*E-TASK: 
 
 Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
@@ -6,12 +42,12 @@ MASALAN: getReverse("hello") return qilsin "olleh"
 @MITASK
 */
 
-function teskari(str) {
-  return str.split('')
-  .reverse()
-  .join('');
-}
-console.log(teskari("ozodbek")); 
+// function teskari(str) {
+//   return str.split('')
+//   .reverse()
+//   .join('');
+// }
+// console.log(teskari("ozodbek")); 
 
 
 /*D-TASK: 
